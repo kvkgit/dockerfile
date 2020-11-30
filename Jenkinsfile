@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage ('Build') {
         git url: 'https://'https://github.com/wakaleo/game-of-life.githttps://github.com/wakaleo/game-of-life.git'
@@ -9,4 +8,4 @@ pipeline {
     } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
   }
 }
-
+}
