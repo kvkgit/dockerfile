@@ -9,7 +9,7 @@ pipeline {
         stage('build and test'){
             steps{
                 sh 'mvn clean package'
-                sh 'echo "build run"
+                sh 'echo "build run"'
                 archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
                        } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
          }
