@@ -1,13 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage ('Build') {
+        stage ('clone') {
            steps{
-              git url: 'https://https://github.com/wakaleo/game-of-life.git'
-              withMaven {
-            sh "mvn clean verify"
-           } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+              git branch: 'master',url: 'https://https://github.com/wakaleo/game-of-life.git'
+           }
+        }
+        stage('build and test'){
+            steps{
+                sh 'mvn clean package'
+                sh 'echo "build run"
+                archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                       } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
          }
      }     
-  }
-}    
